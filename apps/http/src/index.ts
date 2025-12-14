@@ -1,12 +1,9 @@
-import express from 'express';
+import express from "express";
+import { router } from "./routes/v1";
+
 const app = express();
-const port = 3000;
+app.use(express.json())
 
-app.get('/api/v1', (req, res) => {
-  res.send('Hello World!');
-});
+app.use("/api/v1", router)
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
-
+app.listen(process.env.PORT || 3000)
